@@ -10,6 +10,7 @@ import Login from "../auth/Login";
 import Register from "../auth/Register";
 import PrivateRoute from "../contexts-providers/PrivateRoute";
 import Loading from "../components/Loading";
+import SingleRecipePage from "../pages/SingleRecipePage";
 
 const router=createBrowserRouter([
     {
@@ -40,6 +41,10 @@ const router=createBrowserRouter([
             {
                 path:'/my-recipe',
                 element: <MyRecipe></MyRecipe>
+            },
+            {
+                path: '/single-recipe-page',
+                element: <SingleRecipePage></SingleRecipePage>
             },
             {
                 path: '*',

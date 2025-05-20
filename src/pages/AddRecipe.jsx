@@ -89,7 +89,7 @@ const AddRecipe = () => {
             <label className="label">Image URL</label>
             <input
               type="text"
-              name="imageURL"
+              name="image"
               className="input"
               placeholder="Image URL"
             />

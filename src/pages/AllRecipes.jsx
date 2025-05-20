@@ -8,7 +8,7 @@ const AllRecipes = () => {
     return (
         <div>
             <h2 className='text-center text-2xl font-semibold py-4'>All recipes: {allRecipes?.length || 0}</h2>
-            <div>
+            <div className='grid grid-cols-4 gap-4 py-4'>
                 {
                     allRecipes?.map((recipe, i)=><RecipeCard key={i} recipe={recipe}></RecipeCard>)
                 }

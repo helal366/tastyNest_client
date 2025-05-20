@@ -4,7 +4,7 @@ import RecipeCard from '../components/RecipeCard';
 
 const AllRecipes = () => {
     const allRecipes=useLoaderData();
-    console.log(allRecipes);
+    // console.log(allRecipes);
     return (
         <div>
             <h2 className='text-center text-2xl font-semibold py-4'>All recipes: {allRecipes?.length || 0}</h2>

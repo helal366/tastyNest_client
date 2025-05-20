@@ -26,8 +26,8 @@ const Register = () => {
         userRegister(email, password)
         .then(result=>{
             const userFirebase=result.user;
-            const uid=result.user?.uid
-            console.log(result);
+            const uid=result.user?.uid;
+            console.log(result.user, uid);
 
             // update userdata for firebase
             userUpdate({

@@ -43,8 +43,10 @@ const router=createBrowserRouter([
                 element: <MyRecipe></MyRecipe>
             },
             {
-                path: '/single-recipe-page',
-                element: <SingleRecipePage></SingleRecipePage>
+                path: '/single-recipe-page/:id',
+                element: <SingleRecipePage></SingleRecipePage>,
+                loader: ({params})=>fetch(`https://server-tasty-nest.vercel.app/recipes/${params.id}`),
+                hydrateFallbackElement: <Loader></Loader>
             },
             {
                 path: '*',

@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router";
 
 const RecipeCard = ({ recipe }) => {
-  console.log(recipe);
-  const { image, title, category, cuisineType } = recipe;
+//   console.log(recipe);
+  const { image, title, category, cuisineType, _id } = recipe;
   return (
     <div className="bg-gray-200 border border-teal-600 rounded flex flex-col justify-center p-2">
       <div className="w-full flex justify-center">
@@ -16,8 +16,8 @@ const RecipeCard = ({ recipe }) => {
       <h3 className="font-semibold text-center">{title}</h3>
       <p className="text-center text-sm">{category}</p>
       <p className="text-center text-sm mb-4">{cuisineType}</p>
-      
-      <Link className="flex justify-center" to='/single-recipe-page'>
+
+      <Link className="flex justify-center" to={`/single-recipe-page/${_id}`}>
         <button className="btn">Details</button>
       </Link>
     </div>

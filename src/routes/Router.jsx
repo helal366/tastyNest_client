@@ -8,6 +8,8 @@ import MyRecipe from "../pages/MyRecipe";
 import AuthLayout from "../layouts/AuthLayout";
 import Login from "../auth/Login";
 import Register from "../auth/Register";
+import PrivateRoute from "../contexts-providers/PrivateRoute";
+import Loading from "../components/Loading";
 
 const router=createBrowserRouter([
     {
@@ -22,11 +24,18 @@ const router=createBrowserRouter([
             },
             {
                 path:'/all-recipes',
-                element: <AllRecipes></AllRecipes>
+                element: <AllRecipes></AllRecipes>,
+                loader: ()=>fetch(`https://server-tasty-nest.vercel.app/recipes`),
+                hydrateFallbackElement: <Loading></Loading>
+                
             },
             {
                 path:'/add-recipe',
-                element: <AddRecipe></AddRecipe>
+                element: (
+                    <PrivateRoute>
+                        <AddRecipe></AddRecipe>
+                    </PrivateRoute>
+                )
             },
             {
                 path:'/my-recipe',

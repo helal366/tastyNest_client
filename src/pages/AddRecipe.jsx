@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 const AddRecipe = () => {
   // https://server-tasty-nest.vercel.app/recipes
-//   http://localhost:5000/recipes
+  //   http://localhost:5000/recipes
   //   https://www.themealdb.com/images/media/meals/bc8v651619789840.jpg
   const { user, loading } = useContext(AuthContext);
   if (loading) {
@@ -14,97 +14,102 @@ const AddRecipe = () => {
   const userEmail = user ? user.email : "";
   const handleAddRecipe = (e) => {
     e.preventDefault();
-    
+
     const form = e.target;
     const formData = new FormData(form);
-    const {preparationTimeMin, ingredientsInput, likeCount, ...rest} = Object.fromEntries(formData.entries());
-    const ingredientsStringified=ingredientsInput.replace(/'/g, '"');
-    const ingredientsParsed=JSON.parse(ingredientsStringified);
+    const { preparationTimeMin, ingredientsInput, likeCount, ...rest } =
+      Object.fromEntries(formData.entries());
+    const ingredientsStringified = ingredientsInput.replace(/'/g, '"');
+    const ingredientsParsed = JSON.parse(ingredientsStringified);
     
-    const newRecipe={
-        ...rest,
-        ingredients:ingredientsParsed,
-        likeCount: parseInt(likeCount),
-        preparationTimeMin: parseInt(preparationTimeMin)
-    }
+    const newRecipe = {
+      ...rest,
+      ingredients: ingredientsParsed,
+      likeCount: parseInt(likeCount),
+      preparationTimeMin: parseInt(preparationTimeMin),
+    };
     console.log(newRecipe, userEmail);
-    console.log( ingredientsParsed, likeCount, typeof likeCount, );
 
     // add to mongodb server
-    fetch(`https://server-tasty-nest.vercel.app/recipes`,{
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(newRecipe)
+    fetch(`https://server-tasty-nest.vercel.app/recipes`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newRecipe),
     })
-    .then(res=>res.json())
-    .then(data=>{
-        if(data.insertedId){
-            toast.success('Your recipe added')
-            console.log(data)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          toast.success("Your recipe added");
+          console.log(data);
         }
-    })
+      });
   };
   return (
     <div className="py-10">
-      <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl">
+      <div className="card bg-base-100 w-full mx-auto max-w-lg shrink-0 shadow-2xl">
         <div className="card-body">
+          <h2 className="text-xl text-center font-semibold mb-4">
+            Please Add Your Recipe Here!
+          </h2>
           <form onSubmit={handleAddRecipe} className="fieldset">
             <label className="label">Title</label>
             <input
               type="text"
               name="title"
-              className="input"
+              className="input w-full"
               placeholder="Title"
             />
             <label className="label">Category</label>
             <input
               type="text"
               name="category"
-              className="input"
+              className="input w-full"
               placeholder="Ex: Breakfast, Lunch, Dinner, Dessert, Vegan"
             />
             <label className="label">Cuisine Type</label>
             <input
               type="text"
               name="cuisineType"
-              className="input"
+              className="input w-full"
               placeholder="Cuisine Type (ex: American, Chinese, Indian)"
             />
             <label className="label">Preparation Time</label>
             <input
               type="number"
               name="preparationTimeMin"
-              className="input"
+              className="input w-full"
               placeholder="Preparation Time (in min and a number)"
             />
             <label className="label">Instructions</label>
-            <input
-              type="text"
+            <textarea
               name="instructions"
-              className="input"
-              placeholder="Instructions"
-            />
+              className="textarea textarea-bordered h-40 w-full"
+              placeholder="Please write cooking instructions here"
+              required
+            ></textarea>
+
             <label className="label">Ingredients</label>
-            <input
-              type="text"
+            <textarea
               name="ingredientsInput"
-              className="input"
-              placeholder="(ex: ['abc', 'def', 'mnp'])"
-            />
+              className="textarea textarea-bordered h-28 w-full"
+              placeholder="(example: ['chicken', 'oil', 'garlic'])"
+              required
+            ></textarea>
+
             <label className="label">Image URL</label>
             <input
               type="text"
               name="image"
-              className="input"
+              className="input w-full"
               placeholder="Image URL"
             />
             <label className="label">Like Count</label>
             <input
               type="number"
               name="likeCount"
-              className="input"
+              className="input w-full"
               placeholder="starting value is 0"
               value={`${parseInt(0)}`}
               readOnly
@@ -113,7 +118,7 @@ const AddRecipe = () => {
             <input
               type="email"
               name="adderEmail"
-              className="input"
+              className="input w-full"
               placeholder="User Email"
               value={userEmail}
               readOnly

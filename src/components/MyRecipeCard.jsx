@@ -2,9 +2,8 @@ import React, { useContext } from "react";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
 import AuthContext from "../contexts-providers/AuthContext";
-
 const MyRecipeCard = ({ recipe }) => {
-const {allRecipes, setAllRecipes}=useContext(AuthContext);
+  const { allRecipes, setAllRecipes } = useContext(AuthContext);
   const {
     image,
     title,
@@ -13,39 +12,45 @@ const {allRecipes, setAllRecipes}=useContext(AuthContext);
     _id,
     instructions,
     ingredients,
-    likeCount
+    likeCount,
+    preparationTimeMin,
   } = recipe;
-  const handleDelete=(id)=>{
+
+  const handleDelete = (id) => {
     // console.log(id)
     Swal.fire({
-  title: "Are you sure?",
-  text: "You won't be able to revert this!",
-  icon: "warning",
-  showCancelButton: true,
-  confirmButtonColor: "#3085d6",
-  cancelButtonColor: "#d33",
-  confirmButtonText: "Yes, delete it!"
-}).then((result) => {
-  if (result.isConfirmed) {
-    fetch(`https://server-tasty-nest.vercel.app/recipes/${id}`,{
-      method: 'DELETE'
-    })
-    .then(res=>res.json())
-    .then(data=>{
-      if(data.deletedCount){
-        const remainings=allRecipes.filter(recipe=>recipe._id!==id);
-        setAllRecipes(remainings)
-        Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
-          icon: "success"
-        });
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://server-tasty-nest.vercel.app/recipes/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount) {
+              const remainings = allRecipes.filter(
+                (recipe) => recipe._id !== id
+              );
+              setAllRecipes(remainings);
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+            }
+          });
       }
-      
-    })
-  }
-});
-  }
+    });
+  };
+  const handleUpdateRecipe = (e) => {
+    e.preventDefault();
+  };
   return (
     <>
       <div className="bg-gray-200 border border-teal-600 rounded flex flex-col items-start p-6">
@@ -60,10 +65,12 @@ const {allRecipes, setAllRecipes}=useContext(AuthContext);
           <h3 className="font-semibold text-teal-600">{title}</h3>
           <p className="text-sm">Category: {category}</p>
           <p className="text-sm mb-1">Cuisine Type: {cuisineType}</p>
-            <p className="text-sm mb-4 font-medium text-teal-600">Likes: {likeCount}</p>
+          <p className="text-sm mb-4 font-medium text-teal-600">
+            Likes: {likeCount}
+          </p>
           <div className="mb-5">
             <h3 className="font-semibold text-teal-600">Instructions: </h3>
-            <p>{instructions}</p>
+            <div>{instructions} </div>
           </div>
           <div className="mb-4">
             <h3 className="font-semibold text-teal-600">Ingredients:</h3>
@@ -76,10 +83,106 @@ const {allRecipes, setAllRecipes}=useContext(AuthContext);
         </div>
 
         <div className="w-full flex justify-between">
-          
-            <button className="btn bg-teal-600/50 hover:bg-teal-900 hover:text-white">Update</button>
-            <button onClick={()=>handleDelete(_id)}
-            className="btn bg-teal-600/50 hover:bg-teal-900 hover:text-white">Delete</button>
+          {/* Open the modal using document.getElementById('ID').showModal() method */}
+          <button
+            className="btn bg-teal-600/50 hover:bg-teal-900 hover:text-white"
+            onClick={() => document.getElementById("my_modal_5").showModal()}
+          >
+            Update
+          </button>
+
+          <dialog
+            id="my_modal_5"
+            className="modal modal-bottom sm:modal-middle"
+          >
+            <div className="modal-box">
+              <div className="card bg-base-100 w-full shrink-0 shadow-2xl bg-teal-200/50">
+                <div className="card-body">
+                  <h2 className="text-xl text-center font-semibold mb-4">
+                    Please Update Your Recipe Here!
+                  </h2>
+                  <form onSubmit={handleUpdateRecipe} className="fieldset">
+                    <label className="label">Title</label>
+                    <input
+                      type="text"
+                      name="title"
+                      className="input w-full"
+                      defaultValue={title}
+                    />
+                    <label className="label">Category</label>
+                    <input
+                      type="text"
+                      name="category"
+                      className="input w-full"
+                      defaultValue={category}
+                    />
+                    <label className="label">Cuisine Type</label>
+                    <input
+                      type="text"
+                      name="cuisineType"
+                      className="input w-full"
+                      defaultValue={cuisineType}
+                    />
+                    <label className="label">Preparation Time</label>
+                    <input
+                      type="number"
+                      name="preparationTimeMin"
+                      className="input w-full"
+                      defaultValue={preparationTimeMin}
+                    />
+                    <label className="label">Instructions</label>
+                    <textarea
+                      name="instructions"
+                      className="textarea textarea-bordered h-40 w-full"
+                      defaultValue={instructions}
+                      required
+                    ></textarea>
+
+                    <label className="label">Ingredients</label>
+                    <textarea
+                      name="ingredientsInput"
+                      className="textarea textarea-bordered h-28 w-full"
+                      defaultValue={ingredients}
+                      required
+                    ></textarea>
+
+                    <label className="label">Image URL</label>
+                    <input
+                      type="text"
+                      name="image"
+                      className="input w-full"
+                      defaultValue={image}
+                    />
+                    <label className="label">Like Count</label>
+                    <input
+                      type="number"
+                      name="likeCount"
+                      className="input w-full"
+                      placeholder="starting value is 0"
+                      defaultValue={likeCount}
+                    />
+
+                    <button type="submit" className="btn btn-neutral mt-4">
+                      Add Recipe
+                    </button>
+                  </form>
+                </div>
+              </div>
+              <div className="modal-action">
+                <form method="dialog">
+                  {/* if there is a button in form, it will close the modal */}
+                  <button className="btn">Close</button>
+                </form>
+              </div>
+            </div>
+          </dialog>
+
+          <button
+            onClick={() => handleDelete(_id)}
+            className="btn bg-teal-600/50 hover:bg-teal-900 hover:text-white"
+          >
+            Delete
+          </button>
         </div>
       </div>
     </>

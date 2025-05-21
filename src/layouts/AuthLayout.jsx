@@ -6,7 +6,10 @@ const AuthLayout = () => {
     return (
         <div>
             <Navbar></Navbar>
+            <main className='bg-teal-200/40 min-h-screen py-10'>
+
             <Outlet></Outlet>
+            </main>
             
         </div>
     );

@@ -27,7 +27,7 @@ const Login = () => {
       });
   };
   return (
-    <div className="card bg-base-100 w-full max-w-sm mx-auto my-10 shrink-0 shadow-2xl">
+    <div className="card bg-base-100 w-full max-w-sm mx-auto shrink-0 shadow-2xl ">
       <div className="card-body">
         <h2 className="text-3xl text-center font-semibold mb-4">
           Please Login Here!
@@ -50,7 +50,7 @@ const Login = () => {
           <div>
             <a className="link link-hover">Forgot password?</a>
           </div>
-          <button type="submit" className="btn btn-neutral mt-2">
+          <button type="submit" className="btn bg-black/30 hover:bg-black hover:text-white mt-2">
             Login
           </button>
           

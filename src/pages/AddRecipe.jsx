@@ -14,14 +14,21 @@ const AddRecipe = () => {
   const userEmail = user ? user.email : "";
   const handleAddRecipe = (e) => {
     e.preventDefault();
+    
     const form = e.target;
     const formData = new FormData(form);
-    const {preparationTimeMin, ...rest} = Object.fromEntries(formData.entries());
+    const {preparationTimeMin, ingredientsInput, likeCount, ...rest} = Object.fromEntries(formData.entries());
+    const ingredientsStringified=ingredientsInput.replace(/'/g, '"');
+    const ingredientsParsed=JSON.parse(ingredientsStringified);
+    
     const newRecipe={
         ...rest,
+        ingredients:ingredientsParsed,
+        likeCount: parseInt(likeCount),
         preparationTimeMin: parseInt(preparationTimeMin)
     }
     console.log(newRecipe, userEmail);
+    console.log( ingredientsParsed, likeCount, typeof likeCount, );
 
     // add to mongodb server
     fetch(`https://server-tasty-nest.vercel.app/recipes`,{
@@ -82,7 +89,7 @@ const AddRecipe = () => {
             <label className="label">Ingredients</label>
             <input
               type="text"
-              name="ingredients"
+              name="ingredientsInput"
               className="input"
               placeholder="(ex: ['abc', 'def', 'mnp'])"
             />
@@ -99,7 +106,7 @@ const AddRecipe = () => {
               name="likeCount"
               className="input"
               placeholder="starting value is 0"
-              value={0}
+              value={`${parseInt(0)}`}
               readOnly
             />
             <label className="label">User Email </label>

@@ -51,7 +51,7 @@ const Register = () => {
 
     }
     return (
-        <div className="card bg-base-100 w-full max-w-sm mx-auto my-10 shrink-0 shadow-2xl">
+        <div className="card bg-base-100 w-full max-w-sm mx-auto shrink-0 shadow-2xl">
       <div className="card-body">
         <h2 className='text-3xl text-center font-semibold mb-4'>Please Register Here!</h2>
         <form onSubmit={handleRegister}
@@ -67,7 +67,7 @@ const Register = () => {
          />
           
           <button type='submit'
-           className="btn btn-neutral mt-2">Register</button>
+           className="btn bg-black/20 hover:bg-black hover:text-white mt-2">Register</button>
            {
             errorMessage && <p className='text-red-600'>Password must have minimum six characters including minimum one uppercase letter and minimum one lowercase letter</p>
            }

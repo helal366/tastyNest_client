@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
+import Swal from "sweetalert2";
 
 const MyRecipeCard = ({ recipe }) => {
 //   console.log(recipe);
@@ -13,13 +14,40 @@ const MyRecipeCard = ({ recipe }) => {
     ingredients,
     likeCount
   } = recipe;
+  const handleDelete=(id)=>{
+    // console.log(id)
+    Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+    fetch(`https://server-tasty-nest.vercel.app/recipes/${id}`,{
+      method: 'DELETE'
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data)
+      Swal.fire({
+        title: "Deleted!",
+        text: "Your file has been deleted.",
+        icon: "success"
+      });
+    })
+  }
+});
+  }
   return (
     <>
       <div className="bg-gray-200 border border-teal-600 rounded flex flex-col items-start p-6">
         <div className="flex-1">
-          <div className="w-full flex justify-center mb-6">
+          <div className="w-full flex justify-center mb-6 p-6">
             <img
-              className="w-3/4 h-60 bg-gray-200 rounded-lg border border-teal-600 p-1"
+              className="w-full h-60 bg-gray-200 rounded-lg border border-teal-600 p-1"
               src={image}
               alt={title}
             />
@@ -45,7 +73,8 @@ const MyRecipeCard = ({ recipe }) => {
         <div className="w-full flex justify-between">
           
             <button className="btn bg-teal-600/50 hover:bg-teal-900 hover:text-white">Update</button>
-            <button className="btn bg-teal-600/50 hover:bg-teal-900 hover:text-white">Delete</button>
+            <button onClick={()=>handleDelete(_id)}
+            className="btn bg-teal-600/50 hover:bg-teal-900 hover:text-white">Delete</button>
         </div>
       </div>
     </>

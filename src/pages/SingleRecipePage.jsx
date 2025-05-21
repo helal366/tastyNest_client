@@ -45,10 +45,10 @@ const SingleRecipePage = () => {
       <div>
         <p className="text-sm text-teal-600 mb-4 font-medium text-right">Like Count: {like}</p>
       </div>
-      <div className="bg-gray-200 border border-teal-600 rounded max-w-sm mx-auto flex flex-col justify-center p-5">
-        <div className="w-full flex justify-center rounded-full border border-teal-600 mb-6">
+      <div className="bg-gray-200 border border-teal-600 rounded max-w-lg mx-auto flex flex-col justify-center p-5">
+        <div className="w-full flex justify-center mb-6">
           <img
-            className=" rounded-full  p-1"
+            className="w-[80%] rounded-full border border-teal-600  p-2"
             src={image}
             alt={title}
           />
@@ -73,7 +73,7 @@ const SingleRecipePage = () => {
             setLike(updatedLike);
             handleUpdate(_id, updatedLike)
             }}
-        className="btn">Like</button>
+        className="btn bg-teal-100 hover:bg-teal-700 hover:text-white">Like</button>
       </div>
     </div>
   );

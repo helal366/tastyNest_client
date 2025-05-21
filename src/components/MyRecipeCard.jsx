@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
 import AuthContext from "../contexts-providers/AuthContext";
+import { toast } from "react-toastify";
 const MyRecipeCard = ({ recipe }) => {
   const { allRecipes, setAllRecipes } = useContext(AuthContext);
   const {
@@ -63,7 +64,7 @@ const MyRecipeCard = ({ recipe }) => {
       likeCount: parseInt(likeCount),
       preparationTimeMin: parseInt(preparationTimeMin),
     };
-    console.log(newRecipe, _id);
+    // console.log(newRecipe, _id);
 
     // update in mongodb database
     fetch(`https://server-tasty-nest.vercel.app/recipes/${_id}`, {
@@ -75,7 +76,10 @@ const MyRecipeCard = ({ recipe }) => {
     })
     .then(res=>res.json())
     .then(data=>{
-      console.log(data)
+      if(data.modifiedCount){
+        toast.success(`Your recipe updated successfully.`);
+        // console.log(data)
+      }
     })
   };
   return (

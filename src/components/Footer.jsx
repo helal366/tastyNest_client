@@ -4,8 +4,8 @@ import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 padding py-6">
-      <div className="flex flex-col justify-between items-start gap-4 h-full">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 padding py-6 gap-3 sm:gap-6 lg:gap-0">
+      <div className="flex flex-col justify-start lg:justify-between items-start gap-4 h-full">
         <span id="footer-name">tastyNest</span>
         <p className="text-sm">
           Copyright © {new Date().getFullYear()} - All right reserved by{" "}
@@ -24,8 +24,8 @@ const Footer = () => {
         </div>
       </div>
       <div className="flex flex-col justify-center">
-        <h3 className="font-semibold text-right mb-2">Social Media</h3>
-        <div className="flex gap-2 justify-end">
+        <h3 className="font-semibold text-left lg:text-right mb-2">Social Media</h3>
+        <div className="flex gap-2 justify-start lg:justify-end">
           <FaFacebook size={28}></FaFacebook>
           <FaTwitter size={28}></FaTwitter>
           <FaYoutube size={28}></FaYoutube>

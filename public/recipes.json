@@ -45,29 +45,7 @@
     "likeCount": 0,
     "adderEmail": "beauty@gmail.com"
   },
-  {
-    "title": "Beef Brisket Pot Roast",
-    "category": "Beef",
-    "cuisineType": "American",
-    "preparationTimeMin": 240,
-    "instructions": "1. Prepare the brisket: Score the fat on the brisket in a cross-hatch pattern and season with salt. Let it sit for 30 mins at room temperature. 2. Sear the brisket: Heat a pot and sear the brisket on each side until browned, 5-8 minutes per side. 3. Sauté onions and garlic: Cook onions and garlic in the rendered fat for 5-8 minutes until lightly browned. 4. Add herbs and stock: Tie bay leaves, rosemary, and thyme together. Add onions, garlic, brisket, beef stock, and herbs to the pot. Cover and cook in the oven at 300°F for 3 hours, flipping the brisket every hour. 5. Add carrots: After 3 hours, add carrots and cook for another hour until the brisket is tender. 6. Rest and slice: Remove brisket, tent with foil, and discard herbs. Slice the brisket against the grain and serve with vegetables and sauce. 7. Optional sauce: Purée drippings and onions for a smooth sauce. 8. Serve with potatoes, noodles, or polenta.",
-    "image": "https://www.themealdb.com/images/media/meals/ursuup1487348423.jpg",
-    "ingredients": [
-      "4-5 pound beef brisket",
-      "Dash of salt",
-      "3 onions",
-      "5 cloves garlic",
-      "1 sprig thyme",
-      "1 sprig rosemary",
-      "4 bay leaves",
-      "2 cups beef stock",
-      "3 large carrots",
-      "1 tbsp mustard",
-      "4 mashed potatoes"
-    ],
-    "likeCount": 0,
-    "adderEmail": "abdullah@gmail.com"
-  },
+ 
   {
     "title": "Chocolate Raspberry Brownies",
     "category": "Dessert",

@@ -3,15 +3,20 @@ import AuthContext from "../contexts-providers/AuthContext";
 import { toast } from "react-toastify";
 
 const GoogleSignInButton = () => {
+
     const {googleLogin, user}=useContext(AuthContext);
     const handleGoogleLogin=()=>{
         googleLogin()
         .then(()=>{
-            toast.success(`${user?.email} has been successfully logged in.`)
+            toast.success(`${user?.email} has been successfully logged in.`);
+
+            // update user
         }).catch(err=>{
             toast.error(err.message)
         })
     }
+    // https://i.postimg.cc/bJt8QHHG/user-icon.png
+    console.log(user)
   return (
     <div className="mb-2">
       <button onClick={handleGoogleLogin}

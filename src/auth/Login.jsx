@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
 import AuthContext from "../contexts-providers/AuthContext";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import GoogleSignInButton from "../components/GoogleSignInButton";
+import { toast } from "react-toastify";
 
 const Login = () => {
+  const location=useLocation();
+  const navigate=useNavigate();
   const { userLogin } = useContext(AuthContext);
-  // console.log(user);
+  console.log(location);
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -15,10 +18,12 @@ const Login = () => {
     // console.log(formData, email, password);
     userLogin(email, password)
       .then((result) => {
-        console.log(result);
+        const userEmail=result?.user?.email
+        toast.success(`${userEmail} logged in successfully.`);
+        navigate(`${location.state?location.state:'/'}`)
       })
       .catch((err) => {
-        console.log(err.message);
+        toast.error(err.message)
       });
   };
   return (
@@ -48,6 +53,7 @@ const Login = () => {
           <button type="submit" className="btn btn-neutral mt-2">
             Login
           </button>
+          
         </form>
         <GoogleSignInButton></GoogleSignInButton>
         <p>

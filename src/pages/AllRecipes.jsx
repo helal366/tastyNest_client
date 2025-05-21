@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
-import { useLoaderData } from 'react-router';
+
 import RecipeCard from '../components/RecipeCard';
 import AuthContext from '../contexts-providers/AuthContext';
 
 const AllRecipes = () => {
-    const {selectedCuisine}=useContext(AuthContext);
+    const {selectedCuisine,allRecipes}=useContext(AuthContext);
     console.log(selectedCuisine);
     
-    const allRecipes=useLoaderData();
+    
     // console.log(allRecipes);
     const filteredRecipes=selectedCuisine==='All'?allRecipes:allRecipes.filter(recipe=>recipe.cuisineType===selectedCuisine)
     return (

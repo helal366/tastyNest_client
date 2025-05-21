@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import AuthContext from '../contexts-providers/AuthContext';
 import { toast } from 'react-toastify';
 import GoogleSignInButton from '../components/GoogleSignInButton';
 
 const Register = () => {
+    const location=useLocation();
+    const navigate=useNavigate();
     const [errorMessage, setErrorMessage]=useState('')
     const {userRegister, userUpdate,user, setUser}=useContext(AuthContext);
     const handleRegister=(e)=>{
@@ -36,8 +38,9 @@ const Register = () => {
             }).then(()=>{
                 setUser({...userFirebase, displayName: name,
                 photoURL: photoURL});
-                toast.success(`${email} has registered successfully`)
-                form.reset()
+                toast.success(`${email} has registered successfully`);
+                navigate(`${location.state?location.state:'/'}`)
+                form.reset();
             }).catch(err=>{
                 toast.error(err.message)
                 setUser(user)

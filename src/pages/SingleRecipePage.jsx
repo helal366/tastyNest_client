@@ -55,7 +55,7 @@ const SingleRecipePage = () => {
         </div>
         <h3 className="font-semibold text-teal-600">{title}</h3>
         <p className="text-sm">Category: {category}</p>
-        <p className="text-sm ">Cuisine: {cuisineType}</p>
+        <p className="text-sm ">Cuisine Type: {cuisineType}</p>
         <p className="text-sm mb-2">Preparation Time: {preparationTimeMin}</p>
         
         <div className="mb-5">

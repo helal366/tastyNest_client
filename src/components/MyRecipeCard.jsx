@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
+import AuthContext from "../contexts-providers/AuthContext";
 
 const MyRecipeCard = ({ recipe }) => {
-//   console.log(recipe);
+const {allRecipes, setAllRecipes}=useContext(AuthContext);
   const {
     image,
     title,
@@ -31,12 +32,16 @@ const MyRecipeCard = ({ recipe }) => {
     })
     .then(res=>res.json())
     .then(data=>{
-      console.log(data)
-      Swal.fire({
-        title: "Deleted!",
-        text: "Your file has been deleted.",
-        icon: "success"
-      });
+      if(data.deletedCount){
+        const remainings=allRecipes.filter(recipe=>recipe._id!==id);
+        setAllRecipes(remainings)
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success"
+        });
+      }
+      
     })
   }
 });

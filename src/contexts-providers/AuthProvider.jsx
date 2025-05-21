@@ -52,6 +52,7 @@ const AuthProvider = ({children}) => {
         loading,
         setLoading,
         allRecipes,
+        setAllRecipes,
         selectedCuisine,
         setSelectedCuisine,
         userRegister,

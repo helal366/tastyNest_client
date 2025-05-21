@@ -6,7 +6,7 @@ const MyRecipe = () => {
     const {allRecipes, user}=useContext(AuthContext);
     const userEmail=user?.email;
     const filteredRecipesByEmail=allRecipes.filter(recipe=>recipe?.adderEmail===userEmail)
-    console.log(filteredRecipesByEmail);
+    // console.log(filteredRecipesByEmail);
     return (
         <div>
             <h2 className='text-center text-2xl font-semibold py-4'>My recipes: {filteredRecipesByEmail?.length || 0}</h2>

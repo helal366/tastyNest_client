@@ -8,7 +8,7 @@ const Navbar = () => {
   const { user, userLogout, allRecipes, setSelectedCuisine } =
     useContext(AuthContext);
   // console.log(user);
-  console.log(allRecipes);
+  // console.log(allRecipes);
   const [cuisineTypes, setCuisineTypes] = useState(["All"]);
   useEffect(() => {
     const uniqueCuisineTypes = allRecipes.reduce(
@@ -22,7 +22,7 @@ const Navbar = () => {
     );
     setCuisineTypes(uniqueCuisineTypes);
   }, [allRecipes]);
-  console.log(cuisineTypes);
+  // console.log(cuisineTypes);
   const handleLogout = () => {
     userLogout()
       .then(() => {

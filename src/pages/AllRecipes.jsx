@@ -11,7 +11,7 @@ const AllRecipes = () => {
     // console.log(allRecipes);
     const filteredRecipes=selectedCuisine==='All'?allRecipes:allRecipes.filter(recipe=>recipe.cuisineType===selectedCuisine)
     return (
-        <div>
+        <div className='padding'>
             <h2 className='text-center text-2xl font-semibold py-4'>Total recipes: {filteredRecipes?.length || 0}</h2>
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 py-4'>
                 {

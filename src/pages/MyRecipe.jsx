@@ -8,7 +8,7 @@ const MyRecipe = () => {
     const filteredRecipesByEmail=allRecipes.filter(recipe=>recipe?.adderEmail===userEmail)
     // console.log(filteredRecipesByEmail);
     return (
-        <div>
+        <div className='padding'>
             <h2 className='text-center text-2xl font-semibold py-4'>My recipes: {filteredRecipesByEmail?.length || 0}</h2>
             <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 py-4'>
                 {

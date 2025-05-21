@@ -83,8 +83,9 @@ const MyRecipeCard = ({ recipe }) => {
     })
   };
   return (
-    <>
-      <div className="bg-gray-200 border border-teal-600 rounded flex flex-col items-start p-2 md:p-4 lg:p-6">
+    <> 
+    
+      <div className="bg-gray-200 border border-teal-600 rounded flex flex-col items-start p-2 md:p-4 lg:p-6 ">
         <div className="flex-1">
           <div className="w-full flex justify-center mb-6 p-2 md:p-4 lg:p-6">
             <img

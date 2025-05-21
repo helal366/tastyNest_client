@@ -16,7 +16,7 @@ a.active{
   border-radius: 8%;
 }
 a{
-  padding: 2px;
+  padding: 4px;
 }
 .padding{
   @apply px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 2xl:px-40;

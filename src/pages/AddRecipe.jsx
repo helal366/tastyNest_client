@@ -48,7 +48,7 @@ const AddRecipe = () => {
   };
   return (
     <div className="py-10">
-      <div className="card bg-base-100 w-full mx-auto max-w-lg shrink-0 shadow-2xl">
+      <div className="card bg-base-100 w-full mx-auto max-w-lg shrink-0 shadow-2xl bg-teal-100">
         <div className="card-body">
           <h2 className="text-xl text-center font-semibold mb-4">
             Please Add Your Recipe Here!

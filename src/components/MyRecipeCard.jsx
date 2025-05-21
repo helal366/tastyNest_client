@@ -50,12 +50,39 @@ const MyRecipeCard = ({ recipe }) => {
   };
   const handleUpdateRecipe = (e) => {
     e.preventDefault();
+    const form=e.target;
+    const formData=new FormData(form);
+    const { preparationTimeMin, ingredientsInput, likeCount, ...rest } =
+      Object.fromEntries(formData.entries());
+    const ingredientsStringified = ingredientsInput.replace(/'/g, '"');
+    const ingredientsParsed = JSON.parse(ingredientsStringified);
+    
+    const newRecipe = {
+      ...rest,
+      ingredients: ingredientsParsed,
+      likeCount: parseInt(likeCount),
+      preparationTimeMin: parseInt(preparationTimeMin),
+    };
+    console.log(newRecipe, _id);
+
+    // update in mongodb database
+    fetch(`https://server-tasty-nest.vercel.app/recipes/${_id}`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(newRecipe)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data)
+    })
   };
   return (
     <>
-      <div className="bg-gray-200 border border-teal-600 rounded flex flex-col items-start p-6">
+      <div className="bg-gray-200 border border-teal-600 rounded flex flex-col items-start p-2 md:p-4 lg:p-6">
         <div className="flex-1">
-          <div className="w-full flex justify-center mb-6 p-6">
+          <div className="w-full flex justify-center mb-6 p-2 md:p-4 lg:p-6">
             <img
               className="w-full h-60 bg-gray-200 rounded-lg border border-teal-600 p-1"
               src={image}
@@ -86,14 +113,14 @@ const MyRecipeCard = ({ recipe }) => {
           {/* Open the modal using document.getElementById('ID').showModal() method */}
           <button
             className="btn bg-teal-600/50 hover:bg-teal-900 hover:text-white"
-            onClick={() => document.getElementById("my_modal_5").showModal()}
+            onClick={() => document.getElementById(`my_modal_${_id}`).showModal()}
           >
             Update
           </button>
 
           <dialog
-            id="my_modal_5"
-            className="modal modal-bottom sm:modal-middle"
+            id={`my_modal_${_id}`}
+            className="modal modal-bottom sm:modal-middle "
           >
             <div className="modal-box">
               <div className="card bg-base-100 w-full shrink-0 shadow-2xl bg-teal-200/50">
@@ -142,7 +169,7 @@ const MyRecipeCard = ({ recipe }) => {
                     <textarea
                       name="ingredientsInput"
                       className="textarea textarea-bordered h-28 w-full"
-                      defaultValue={ingredients}
+                      defaultValue={JSON.stringify(ingredients)}
                       required
                     ></textarea>
 
@@ -162,8 +189,9 @@ const MyRecipeCard = ({ recipe }) => {
                       defaultValue={likeCount}
                     />
 
-                    <button type="submit" className="btn btn-neutral mt-4">
-                      Add Recipe
+                    <button 
+                    type="submit" className="btn bg-black text-white hover:bg-gray-300 hover:text-black mt-4">
+                      Update Recipe
                     </button>
                   </form>
                 </div>
@@ -171,7 +199,7 @@ const MyRecipeCard = ({ recipe }) => {
               <div className="modal-action">
                 <form method="dialog">
                   {/* if there is a button in form, it will close the modal */}
-                  <button className="btn">Close</button>
+                  <button className="btn bg-teal-100 hover:bg-teal-700 hover:text-white">Close</button>
                 </form>
               </div>
             </div>

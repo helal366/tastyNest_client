@@ -1,12 +1,28 @@
-import React, { useContext } from "react";
-import { NavLink } from "react-router";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, NavLink } from "react-router";
 import AuthContext from "../contexts-providers/AuthContext";
 import { toast } from "react-toastify";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
-  const { user, userLogout } = useContext(AuthContext);
-  console.log(user);
+  const { user, userLogout, allRecipes, setSelectedCuisine } =
+    useContext(AuthContext);
+  // console.log(user);
+  console.log(allRecipes);
+  const [cuisineTypes, setCuisineTypes] = useState(["All"]);
+  useEffect(() => {
+    const uniqueCuisineTypes = allRecipes.reduce(
+      (acc, recipe) => {
+        if (recipe?.cuisineType && !acc.includes(recipe.cuisineType)) {
+          acc.push(recipe.cuisineType);
+        }
+        return acc;
+      },
+      ["All"]
+    );
+    setCuisineTypes(uniqueCuisineTypes);
+  }, [allRecipes]);
+  console.log(cuisineTypes);
   const handleLogout = () => {
     userLogout()
       .then(() => {
@@ -16,43 +32,99 @@ const Navbar = () => {
         toast.error(err.message);
       });
   };
+
   return (
     <nav className="bg-amber-50 h-24 border-b border-gray-400 shadow-md">
       <div className="flex justify-between items-center padding h-full">
         <div className="flex">
-          <div id="nav-logo" className="hidden  md:block">tastyNest</div>
+          <div id="nav-logo" className="hidden  md:block">
+            tastyNest
+          </div>
 
           <div className="dropdown">
-            <div tabIndex={0} role="button" className=" md:hidden cursor-pointer">
-              <GiHamburgerMenu size={28}/>
+            <div
+              tabIndex={0}
+              role="button"
+              className=" md:hidden cursor-pointer"
+            >
+              <GiHamburgerMenu size={28} />
             </div>
             <ul
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               <li>
-                <NavLink to="/">Home</NavLink>
-              </li>
-              <li>
-                <NavLink to="/all-recipes">All Recipes</NavLink>
-                
-
-              </li>
-              <li>
-                <NavLink to="/add-recipe">Add Recipe</NavLink>
-              </li>
-              <li>
-                <NavLink to="/my-recipe">My Recipe</NavLink>
-              </li>
+              <NavLink to="/">Home</NavLink>
+            </li>
+            &nbsp; &nbsp;
+            <li>
+              <details>
+                <summary>
+                  <NavLink to="/all-recipes">All Recipes</NavLink>
+                </summary>
+                <ul className="p-2 z-10">
+                  {cuisineTypes.map((cuisineType, i) => (
+                    <li key={i} className="p-1 m-1 max-w-sm">
+                      <NavLink
+                      
+                        to="/all-recipes"
+                        onClick={() => setSelectedCuisine(cuisineType)}
+                      >
+                        {cuisineType}
+                      </NavLink>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            </li>
+            &nbsp; &nbsp;
+            <li>
+              <NavLink to="/add-recipe">Add Recipe</NavLink>
+            </li>
+            &nbsp; &nbsp;
+            <li>
+              <NavLink to="/my-recipe">My Recipe</NavLink>
+            </li>
             </ul>
           </div>
         </div>
-        <div className="hidden md:block">
-          <NavLink to="/">Home</NavLink> &nbsp; &nbsp;
-          <NavLink to="/all-recipes">All Recipes</NavLink> &nbsp; &nbsp;
-          <NavLink to="/add-recipe">Add Recipe</NavLink> &nbsp; &nbsp;
-          <NavLink to="/my-recipe">My Recipe</NavLink>
+        <div className="navbar-center hidden md:flex">
+          <ul className="menu menu-horizontal px-1 items-center text-[16px]">
+            <li>
+              <NavLink to="/">Home</NavLink>
+            </li>
+            &nbsp; &nbsp;
+            <li>
+              <details>
+                <summary>
+                  <NavLink to="/all-recipes">All Recipes</NavLink>
+                </summary>
+                <ul className="p-2 z-10">
+                  {cuisineTypes.map((cuisineType, i) => (
+                    <li key={i} className="p-1 m-1 max-w-sm">
+                      <NavLink
+                      
+                        to="/all-recipes"
+                        onClick={() => setSelectedCuisine(cuisineType)}
+                      >
+                        {cuisineType}
+                      </NavLink>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            </li>
+            &nbsp; &nbsp;
+            <li>
+              <NavLink to="/add-recipe">Add Recipe</NavLink>
+            </li>
+            &nbsp; &nbsp;
+            <li>
+              <NavLink to="/my-recipe">My Recipe</NavLink>
+            </li>
+          </ul>
         </div>
+
         <div>
           {user ? (
             <>

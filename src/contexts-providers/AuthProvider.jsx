@@ -5,9 +5,11 @@ import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStat
 
 const auth=getAuth(app)
 const AuthProvider = ({children}) => {
-    const [loading, setLoading]=useState(true)
     const googleProvider=new GoogleAuthProvider();
-    const [user, setUser]=useState(null)
+    const [loading, setLoading]=useState(true);
+    const [user, setUser]=useState(null);
+    const [allRecipes, setAllRecipes]=useState([]);
+    const [selectedCuisine, setSelectedCuisine]=useState('All')
     const userRegister=(email,password)=>{
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
@@ -33,6 +35,12 @@ const AuthProvider = ({children}) => {
             setUser(currentUser);
             setLoading(false)
         });
+
+        fetch(`https://server-tasty-nest.vercel.app/recipes`)
+        .then(res=>res.json())
+        .then(data=>{
+            setAllRecipes(data)
+        })
         return ()=>{
             unsubscribe();
         }
@@ -43,6 +51,9 @@ const AuthProvider = ({children}) => {
         setUser,
         loading,
         setLoading,
+        allRecipes,
+        selectedCuisine,
+        setSelectedCuisine,
         userRegister,
         userLogin,
         userUpdate,

@@ -50,7 +50,7 @@ const Login = () => {
           <div>
             <a className="link link-hover">Forgot password?</a>
           </div>
-          <button type="submit" className="btn bg-black/30 hover:bg-black hover:text-white mt-2">
+          <button type="submit" className="btn bg-teal-500 text-gray-950 hover:bg-teal-900 hover:text-gray-100 mt-2">
             Login
           </button>
           

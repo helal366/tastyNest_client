@@ -21,6 +21,8 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home></Home>,
+        loader: ()=>fetch(`https://server-tasty-nest.vercel.app/top-recipes`),
+        hydrateFallbackElement: <Loading></Loading>
       },
       {
         path: "/all-recipes",

@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 const AddRecipe = () => {
   // https://server-tasty-nest.vercel.app/recipes
-  //   http://localhost:5000/recipes
+  //   https://server-tasty-nest.vercel.app/recipes
   //   https://www.themealdb.com/images/media/meals/bc8v651619789840.jpg
   const { user, loading } = useContext(AuthContext);
   if (loading) {
@@ -48,7 +48,7 @@ const AddRecipe = () => {
   };
   return (
     <div className="py-10 padding">
-      <div className="card bg-base-100 w-full mx-auto max-w-lg shrink-0 shadow-2xl bg-teal-100">
+      <div className="card bg-base-100 w-full mx-auto max-w-lg shrink-0 shadow-2xl">
         <div className="card-body">
           <h2 className="text-xl text-center font-semibold mb-4">
             Please Add Your Recipe Here!

@@ -85,7 +85,7 @@ const MyRecipeCard = ({ recipe }) => {
   return (
     <> 
     
-      <div className="bg-gray-200 border border-teal-600 rounded flex flex-col items-start p-2 md:p-4 lg:p-6 ">
+      <div className="bg-gray-200 border border-teal-600 text-teal-600 rounded flex flex-col items-start p-2 md:p-4 lg:p-6 ">
         <div className="flex-1">
           <div className="w-full flex justify-center mb-6 p-2 md:p-4 lg:p-6">
             <img
@@ -94,18 +94,18 @@ const MyRecipeCard = ({ recipe }) => {
               alt={title}
             />
           </div>
-          <h3 className="font-semibold text-teal-600">{title}</h3>
+          <h3 className="font-semibold text-teal-900">{title}</h3>
           <p className="text-sm">Category: {category}</p>
           <p className="text-sm mb-1">Cuisine Type: {cuisineType}</p>
-          <p className="text-sm mb-4 font-medium text-teal-600">
+          <p className="text-sm mb-4 font-medium text-teal-900">
             Likes: {likeCount}
           </p>
           <div className="mb-5">
-            <h3 className="font-semibold text-teal-600">Instructions: </h3>
+            <h3 className="font-semibold text-teal-900">Instructions: </h3>
             <div>{instructions} </div>
           </div>
           <div className="mb-4">
-            <h3 className="font-semibold text-teal-600">Ingredients:</h3>
+            <h3 className="font-semibold text-teal-900">Ingredients:</h3>
             {ingredients.map((ingre, i) => (
               <p key={i}>
                 {i + 1}: {ingre}
@@ -128,7 +128,7 @@ const MyRecipeCard = ({ recipe }) => {
             className="modal modal-bottom sm:modal-middle "
           >
             <div className="modal-box">
-              <div className="card bg-base-100 w-full shrink-0 shadow-2xl bg-teal-200/50">
+              <div className="card bg-base-100 w-full shrink-0 shadow-2xl">
                 <div className="card-body">
                   <h2 className="text-xl text-center font-semibold mb-4">
                     Please Update Your Recipe Here!
@@ -195,7 +195,7 @@ const MyRecipeCard = ({ recipe }) => {
                     />
 
                     <button 
-                    type="submit" className="btn bg-black text-white hover:bg-gray-300 hover:text-black mt-4">
+                    type="submit" className="btn bg-black text-gray-100 hover:bg-gray-300 hover:text-black mt-4">
                       Update Recipe
                     </button>
                   </form>
@@ -204,12 +204,12 @@ const MyRecipeCard = ({ recipe }) => {
               <div className="modal-action">
                 <form method="dialog">
                   {/* if there is a button in form, it will close the modal */}
-                  <button className="btn bg-teal-100 hover:bg-teal-700 hover:text-white">Close</button>
+                  <button className="btn bg-black text-gray-100 hover:bg-gray-300 hover:text-black">Close</button>
                 </form>
               </div>
             </div>
           </dialog>
-
+            <ModalMyRecipe recipe={recipe}></ModalMyRecipe>
           <button
             onClick={() => handleDelete(_id)}
             className="btn bg-teal-600/50 hover:bg-teal-900 hover:text-white"

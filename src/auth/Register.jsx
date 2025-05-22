@@ -67,7 +67,7 @@ const Register = () => {
          />
           
           <button type='submit'
-           className="btn bg-black/20 hover:bg-black hover:text-white mt-2">Register</button>
+           className="btn bg-teal-500 text-gray-950 hover:bg-teal-900 hover:text-gray-100 mt-2">Register</button>
            {
             errorMessage && <p className='text-red-600'>Password must have minimum six characters including minimum one uppercase letter and minimum one lowercase letter</p>
            }

@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router";
 import AuthContext from "../contexts-providers/AuthContext";
 import { toast } from "react-toastify";
 import { GiHamburgerMenu } from "react-icons/gi";
+import ToggleDarkLight from "./ToggleDarkLight";
 
 const Navbar = () => {
   const { user, userLogout, allRecipes, setSelectedCuisine } =
@@ -34,10 +35,10 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-amber-50 h-24 border-b border-gray-400 shadow-md">
-      <div className="flex justify-between items-center padding h-full">
+    <nav className=" bg-base-100 h-24 border-b border-gray-400 shadow-md">
+      <div className="navbar flex justify-between items-center padding h-full">
         <div className="flex">
-          <div id="nav-logo" className="hidden  md:block">
+          <div id="nav-logo" className="hidden  md:block dark:text-gray-600">
             tastyNest
           </div>
 
@@ -125,7 +126,7 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div>
+        <div className="flex justify-end gap-4 items-center">
           {user ? (
             <>
               <div className="dropdown dropdown-end">
@@ -161,18 +162,13 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <NavLink to="/auth/login">Login</NavLink> &nbsp; &nbsp;
+              <NavLink to="/auth/login">Login</NavLink>
               <NavLink to="/auth/register">Register</NavLink>
 
             </>
           )}
           {/* theme controller */}
-          {/* <div>
-            <input
-  type="checkbox"
-  value="synthwave"
-  className="toggle theme-controller col-span-2 col-start-1 row-start-1 border-sky-400 bg-amber-300 [--tglbg:var(--color-sky-500)] checked:border-blue-800 checked:bg-blue-300 checked:[--tglbg:var(--color-blue-900)]" />
-          </div> */}
+          <ToggleDarkLight></ToggleDarkLight>
         </div>
       </div>
     </nav>

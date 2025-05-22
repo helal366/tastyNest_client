@@ -41,9 +41,9 @@ const SingleRecipePage = () => {
         })
     }
   return (
-    <div className="py-8">
+    <div className="padding py-8 text-teal-600">
       <div>
-        <p className="text-sm text-teal-600 mb-4 font-medium text-right">Like Count: {like}</p>
+        <p className="text-sm text-gray-900 mb-4 font-medium text-right">Like Count: {like}</p>
       </div>
       <div className="bg-gray-200 border border-teal-600 rounded max-w-lg mx-auto flex flex-col justify-center p-5">
         <div className="w-full flex justify-center mb-6">
@@ -53,17 +53,17 @@ const SingleRecipePage = () => {
             alt={title}
           />
         </div>
-        <h3 className="font-semibold text-teal-600">{title}</h3>
+        <h3 className="font-semibold text-teal-900">{title}</h3>
         <p className="text-sm">Category: {category}</p>
         <p className="text-sm ">Cuisine Type: {cuisineType}</p>
         <p className="text-sm mb-2">Preparation Time: {preparationTimeMin}</p>
         
         <div className="mb-5">
-          <h3 className="font-semibold text-teal-600">Instructions: </h3>
+          <h3 className="font-semibold text-teal-900">Instructions: </h3>
           <p>{instructions}</p>
         </div>
         <div className="mb-4">
-            <h3 className="font-semibold text-teal-600">Ingredients:</h3>
+            <h3 className="font-semibold text-teal-900">Ingredients:</h3>
             {
                 ingredients.map((ingre, i)=><p key={i} >{i+1}: {ingre}</p>)
             }
@@ -73,7 +73,7 @@ const SingleRecipePage = () => {
             setLike(updatedLike);
             handleUpdate(_id, updatedLike)
             }}
-        className="btn bg-teal-100 hover:bg-teal-700 hover:text-white">Like</button>
+        className="btn bg-teal-100 text-teal-900 hover:bg-teal-700 hover:text-white">Like</button>
       </div>
     </div>
   );

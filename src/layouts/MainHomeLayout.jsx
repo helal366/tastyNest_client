@@ -7,10 +7,10 @@ const MainHomeLayout = () => {
   return (
     <div>
       <Navbar></Navbar>
-      <main className=" bg-gray-100 min-h-screen">
+      <main className="bg-teal-200/40 min-h-screen">
         <Outlet></Outlet>
       </main>
-      <footer className="bg-amber-50 border-t min-h-24 border-gray-400 shadow-md">
+      <footer className=" border-t min-h-24 border-gray-400 shadow-md">
         <Footer></Footer>
       </footer>
     </div>

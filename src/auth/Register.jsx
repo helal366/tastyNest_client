@@ -72,7 +72,7 @@ const Register = () => {
             errorMessage && <p className='text-red-600'>Password must have minimum six characters including minimum one uppercase letter and minimum one lowercase letter</p>
            }
         </form>
-        <GoogleSignInButton></GoogleSignInButton>
+        <GoogleSignInButton location={location}></GoogleSignInButton>
            <p>Already registered? &nbsp;
             <Link to='/auth/login' className='text-teal-600 underline'>Go to Login</Link>
            </p>

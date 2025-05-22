@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
+import AuthContext from "../contexts-providers/AuthContext";
+import { toast } from "react-toastify";
 
 const SingleRecipePage = () => {
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
   const recipe = useLoaderData();
-  
+  const {user}=useContext(AuthContext);
+  const userEmail=user.email;
   const {
       image,
       title,
@@ -13,10 +19,11 @@ const SingleRecipePage = () => {
       ingredients,
       instructions,
       preparationTimeMin,
-      likeCount
+      likeCount,
+      adderEmail
     } = recipe;
     const [like, setLike]=useState(likeCount || 0);
-    // console.log(likeCount, typeof likeCount);
+    console.log(likeCount, userEmail, adderEmail);
     const handleUpdate=(id, updatedLike)=>{
         const updateInfo={
             likeCount:updatedLike
@@ -37,7 +44,7 @@ const SingleRecipePage = () => {
         .then(data=>{
             console.log(data)
         }).catch(err=>{
-            console.log(`update fail, ${err.message}`)
+            toast.error(`update fail, ${err.message}`)
         })
     }
   return (
@@ -69,6 +76,9 @@ const SingleRecipePage = () => {
             }
         </div>
         <button onClick={()=>{
+          if(userEmail===adderEmail){
+            return toast.warning('You added this recipe. You cannot like this recipe.')
+          }
             const updatedLike=like+1;
             setLike(updatedLike);
             handleUpdate(_id, updatedLike)

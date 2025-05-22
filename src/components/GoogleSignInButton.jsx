@@ -1,26 +1,30 @@
 import React, { useContext } from "react";
 import AuthContext from "../contexts-providers/AuthContext";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 
-const GoogleSignInButton = () => {
-
-    const {googleLogin, user}=useContext(AuthContext);
-    const handleGoogleLogin=()=>{
-        googleLogin()
-        .then(()=>{
-            toast.success(`${user?.email} has been successfully logged in.`);
-
-            // update user
-        }).catch(err=>{
-            toast.error(err.message)
-        })
-    }
-    // https://i.postimg.cc/bJt8QHHG/user-icon.png
-    console.log(user)
+const GoogleSignInButton = ({ location }) => {
+  const navigate = useNavigate();
+  const { googleLogin, user } = useContext(AuthContext);
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then(() => {
+        navigate("/");
+        toast.success(`You has been successfully logged in.`);
+        // update user
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
+  };
+  // https://i.postimg.cc/bJt8QHHG/user-icon.png
+  console.log(user, location);
   return (
     <div className="mb-2">
-      <button onClick={handleGoogleLogin}
-      className="btn w-full bg-teal-500 text-gray-950 hover:bg-teal-900 hover:text-gray-100 border-[#e5e5e5]">
+      <button
+        onClick={handleGoogleLogin}
+        className="btn w-full bg-teal-500 text-gray-950 hover:bg-teal-900 hover:text-gray-100 border-[#e5e5e5]"
+      >
         <svg
           aria-label="Google logo"
           width="16"

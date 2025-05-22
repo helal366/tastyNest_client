@@ -84,7 +84,7 @@ const Navbar = () => {
             </li>
             &nbsp; &nbsp;
             <li>
-              <NavLink to="/my-recipe">My Recipe</NavLink>
+              <NavLink to="/my-recipe">My Recipes</NavLink>
             </li>
             </ul>
           </div>

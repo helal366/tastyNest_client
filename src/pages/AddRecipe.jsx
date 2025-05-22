@@ -94,7 +94,7 @@ const AddRecipe = () => {
             <textarea
               name="ingredientsInput"
               className="textarea textarea-bordered h-28 w-full"
-              placeholder="(example: ['chicken', 'oil', 'garlic'])"
+              placeholder="Please add the ingredients into an array according to the example. (example: ['chicken', 'oil', 'garlic'])"
               required
             ></textarea>
 

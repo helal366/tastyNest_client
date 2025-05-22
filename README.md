@@ -1,3 +1,45 @@
+## Project Name: tastyNest
+**tastyNest** is a modern, responsive web application focused on delivering a delightful food experience online. Whether you want to explore new recipes, order tasty meals, or share your food adventures, tastyNest is your go-to platform!
+
+## Purpose
+The primary goal of tastyNest is to offer a platform for food enthusiasts to discover and share culinary creations. It provides a seamless and interactive interface for browsing recipes based on cuisine types, managing personal recipes, and securely logging in via email or Google.
+
+## Live link
+You can access the live link here:  
+https://client-tastynest.web.app/
+
+# Features
+# User authentication (Register, Login, Google OAuth)
+- Secure login and registration using Firebase Authentication.
+- Supports both traditional email/password and Google OAuth.
+- Stores user session to manage access to private routes.
+
+
+- Responsive UI with light/dark theme toggle
+- User profile update with photo URL
+- Private route protection
+- Social media integration icons
+- Toast notifications for user feedback
+- Clean and user-friendly interface
+
+# NPM Packages Used
+- React.js  
+- React Router  
+- Firebase Authentication  
+- React Toastify  
+- Tailwind CSS
+- Daisy UI  
+- React Icons 
+- Sweet Alert2
+- React Lottie
+- React Type Writer
+- React Slick
+-  
+
+
+
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

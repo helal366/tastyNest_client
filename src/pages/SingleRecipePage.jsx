@@ -9,7 +9,7 @@ const SingleRecipePage = () => {
   },[])
   const recipe = useLoaderData();
   const {user}=useContext(AuthContext);
-  const userEmail=user.email;
+  const userEmail=user.email || '';
   const {
       image,
       title,

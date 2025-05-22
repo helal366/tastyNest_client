@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router";
+// import { Link } from "react-router";
 import Swal from "sweetalert2";
 import AuthContext from "../contexts-providers/AuthContext";
 import { toast } from "react-toastify";
@@ -209,7 +209,7 @@ const MyRecipeCard = ({ recipe }) => {
               </div>
             </div>
           </dialog>
-            <ModalMyRecipe recipe={recipe}></ModalMyRecipe>
+            
           <button
             onClick={() => handleDelete(_id)}
             className="btn bg-teal-600/50 hover:bg-teal-900 hover:text-white"

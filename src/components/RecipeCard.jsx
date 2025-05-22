@@ -18,7 +18,7 @@ const RecipeCard = ({ recipe }) => {
       <p className="text-center text-sm mb-4">Cuisine Type: {cuisineType}</p>
 
       <Link className="flex justify-center" to={`/single-recipe-page/${_id}`}>
-        <button className="btn bg-teal-500 text-gray-950 hover:bg-teal-900 hover:text-gray-100">Details</button>
+        <button className="btn bg-teal-500 text-gray-950 hover:bg-teal-900 hover:text-gray-100 border-none">Details</button>
       </Link>
     </div>
   );

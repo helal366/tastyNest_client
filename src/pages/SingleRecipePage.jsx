@@ -73,7 +73,7 @@ const SingleRecipePage = () => {
             setLike(updatedLike);
             handleUpdate(_id, updatedLike)
             }}
-        className="btn bg-teal-100 text-teal-900 hover:bg-teal-700 hover:text-white">Like</button>
+        className="btn bg-teal-300 text-teal-900 hover:bg-teal-700 hover:text-white">Like</button>
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ import Register from "../auth/Register";
 import PrivateRoute from "../contexts-providers/PrivateRoute";
 import Loading from "../components/Loading";
 import SingleRecipePage from "../pages/SingleRecipePage";
+import { Suspense } from "react";
 
 const router = createBrowserRouter([
   {
@@ -20,13 +21,21 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home></Home>,
-        loader: ()=>fetch(`https://server-tasty-nest.vercel.app/top-recipes`),
-        hydrateFallbackElement: <Loading></Loading>
+        element: (
+          <Suspense fallback={<Loading></Loading>}>
+            <Home></Home>
+          </Suspense>
+        ),
+        loader: () => fetch(`https://server-tasty-nest.vercel.app/top-recipes`),
+        hydrateFallbackElement: <Loading></Loading>,
       },
       {
         path: "/all-recipes",
-        element: <AllRecipes></AllRecipes>,
+        element: (
+          <Suspense fallback={<Loading></Loading>}>
+            <AllRecipes></AllRecipes>
+          </Suspense>
+        ),
       },
       {
         path: "/add-recipe",

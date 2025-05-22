@@ -57,7 +57,6 @@ const Navbar = () => {
               <li>
               <NavLink to="/">Home</NavLink>
             </li>
-            &nbsp; &nbsp;
             <li>
               <details>
                 <summary>
@@ -78,11 +77,10 @@ const Navbar = () => {
                 </ul>
               </details>
             </li>
-            &nbsp; &nbsp;
             <li>
               <NavLink to="/add-recipe">Add Recipe</NavLink>
             </li>
-            &nbsp; &nbsp;
+            &nbsp;
             <li>
               <NavLink to="/my-recipe">My Recipes</NavLink>
             </li>
@@ -94,7 +92,6 @@ const Navbar = () => {
             <li>
               <NavLink to="/">Home</NavLink>
             </li>
-            &nbsp; &nbsp;
             <li>
               <details>
                 <summary>
@@ -115,13 +112,13 @@ const Navbar = () => {
                 </ul>
               </details>
             </li>
-            &nbsp; &nbsp;
+            
             <li>
               <NavLink to="/add-recipe">Add Recipe</NavLink>
             </li>
-            &nbsp; &nbsp;
+            
             <li>
-              <NavLink to="/my-recipe">My Recipe</NavLink>
+              <NavLink to="/my-recipe">My Recipes</NavLink>
             </li>
           </ul>
         </div>

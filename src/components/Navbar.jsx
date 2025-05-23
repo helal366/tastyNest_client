@@ -6,7 +6,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import ToggleDarkLight from "./ToggleDarkLight";
 
 const Navbar = () => {
-  const { user, userLogout, allRecipes, setSelectedCuisine } =
+  const { user, userLogout, allRecipes, setSelectedCuisine, setLoading } =
     useContext(AuthContext);
   // console.log(user);
   // console.log(allRecipes);
@@ -28,6 +28,7 @@ const Navbar = () => {
     userLogout()
       .then(() => {
         toast.success(`${user?.email} has logged out successfully.`);
+        setLoading(false)
       })
       .catch((err) => {
         toast.error(err.message);
@@ -80,7 +81,6 @@ const Navbar = () => {
             <li>
               <NavLink to="/add-recipe">Add Recipe</NavLink>
             </li>
-            &nbsp;
             <li>
               <NavLink to="/my-recipe">My Recipes</NavLink>
             </li>

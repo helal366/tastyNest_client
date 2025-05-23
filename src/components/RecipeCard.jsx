@@ -5,7 +5,7 @@ const RecipeCard = ({ recipe }) => {
 //   console.log(recipe);
   const { image, title, category, cuisineType, _id, likeCount } = recipe;
   return (
-    <div className="bg-gray-200 border border-teal-600 text-teal-600 rounded flex flex-col justify-center p-2">
+    <div className="bg-gray-200 border border-teal-600 text-gray-700 rounded flex flex-col justify-center p-2">
       <div className="w-full flex justify-center mb-5">
         <img
           className="w-[80%] h-40 rounded-lg border border-teal-600 p-1"
@@ -19,7 +19,7 @@ const RecipeCard = ({ recipe }) => {
       <p className="text-center text-sm mb-4">Like Count: {likeCount}</p>
 
       <Link className="flex justify-center" to={`/single-recipe-page/${_id}`}>
-        <button className="btn bg-teal-500 text-gray-950 hover:bg-teal-900 hover:text-gray-100 border-none"> View Details</button>
+        <button className="btn bg-teal-600/50 hover:bg-teal-900 hover:text-white border-none"> View Details</button>
       </Link>
     </div>
   );

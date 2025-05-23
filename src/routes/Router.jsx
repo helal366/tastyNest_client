@@ -35,13 +35,15 @@ const router = createBrowserRouter([
           <Suspense fallback={<Loading></Loading>}>
             <AllRecipes></AllRecipes>
           </Suspense>
-        )
+        ),
       },
       {
         path: "/add-recipe",
         element: (
           <PrivateRoute>
-            <AddRecipe></AddRecipe>
+            <Suspense fallback={<Loading></Loading>}>
+              <AddRecipe></AddRecipe>
+            </Suspense>
           </PrivateRoute>
         ),
       },
@@ -49,7 +51,9 @@ const router = createBrowserRouter([
         path: "/my-recipe",
         element: (
           <PrivateRoute>
-            <MyRecipe></MyRecipe>
+            <Suspense fallback={<Loading></Loading>}>
+              <MyRecipe></MyRecipe>
+            </Suspense>
           </PrivateRoute>
         ),
       },
@@ -57,7 +61,9 @@ const router = createBrowserRouter([
         path: "/single-recipe-page/:id",
         element: (
           <PrivateRoute>
-            <SingleRecipePage></SingleRecipePage>
+            <Suspense fallback={<Loading></Loading>}>
+              <SingleRecipePage></SingleRecipePage>
+            </Suspense>
           </PrivateRoute>
         ),
         loader: ({ params }) =>

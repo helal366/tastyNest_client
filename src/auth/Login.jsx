@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 const Login = () => {
   const location=useLocation();
   const navigate=useNavigate();
-  const { userLogin } = useContext(AuthContext);
+  const { userLogin, setLoading } = useContext(AuthContext);
   // console.log(location);
   const handleLogin = (e) => {
     e.preventDefault();
@@ -20,7 +20,8 @@ const Login = () => {
       .then((result) => {
         const userEmail=result?.user?.email
         toast.success(`${userEmail} logged in successfully.`);
-        navigate(`${location.state?location.state:'/'}`)
+        navigate(`${location.state?location.state:'/'}`);
+        setLoading(false)
       })
       .catch((err) => {
         toast.error(err.message)

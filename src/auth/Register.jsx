@@ -8,7 +8,7 @@ const Register = () => {
     const location=useLocation();
     const navigate=useNavigate();
     const [errorMessage, setErrorMessage]=useState('')
-    const {userRegister, userUpdate,user, setUser}=useContext(AuthContext);
+    const {userRegister, userUpdate,user, setUser, setLoading}=useContext(AuthContext);
     const handleRegister=(e)=>{
         e.preventDefault();
         const form=e.target;
@@ -30,7 +30,7 @@ const Register = () => {
             const userFirebase=result.user;
             const uid=result.user?.uid;
             console.log(result.user, uid);
-
+            setLoading(false)
             // update userdata for firebase
             userUpdate({
                 displayName: name,

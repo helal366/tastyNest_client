@@ -23,12 +23,12 @@ const SingleRecipePage = () => {
       adderEmail
     } = recipe;
     const [like, setLike]=useState(likeCount || 0);
-    console.log(likeCount, userEmail, adderEmail);
+    // console.log(likeCount, userEmail, adderEmail);
     const handleUpdate=(id, updatedLike)=>{
         const updateInfo={
             likeCount:updatedLike
         }
-        console.log(updateInfo);
+        // console.log(updateInfo);
         fetch(`https://server-tasty-nest.vercel.app/recipes/${id}`,{
             method: 'PATCH',
             headers: {
@@ -41,8 +41,8 @@ const SingleRecipePage = () => {
                 throw new Error(`HTTP error, status ${res.status}`)
             }
             return res.json()})
-        .then(data=>{
-            console.log(data)
+        .then(()=>{
+            // console.log(data)
         }).catch(err=>{
             toast.error(`update fail, ${err.message}`)
         })

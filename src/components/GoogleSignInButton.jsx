@@ -3,9 +3,9 @@ import AuthContext from "../contexts-providers/AuthContext";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
 
-const GoogleSignInButton = ({ location }) => {
+const GoogleSignInButton = () => {
   const navigate = useNavigate();
-  const { googleLogin, user } = useContext(AuthContext);
+  const { googleLogin } = useContext(AuthContext);
   const handleGoogleLogin = () => {
     googleLogin()
       .then(() => {
@@ -18,7 +18,7 @@ const GoogleSignInButton = ({ location }) => {
       });
   };
   // https://i.postimg.cc/bJt8QHHG/user-icon.png
-  console.log(user, location);
+  // console.log(user, location);
   return (
     <div className="mb-2">
       <button

@@ -17,7 +17,7 @@ const Register = () => {
         const email=formData.get('email');
         const photoURL=formData.get('photo')
         const password=formData.get('password');
-        console.log(email, password);
+        // console.log(email, password);
         // password validation
         const passwordRegEx=/(?=.*[a-z])(?=.*[A-Z]).{6,}/;
         setErrorMessage('')
@@ -28,8 +28,8 @@ const Register = () => {
         userRegister(email, password)
         .then(result=>{
             const userFirebase=result.user;
-            const uid=result.user?.uid;
-            console.log(result.user, uid);
+            // const uid=result.user?.uid;
+            // console.log(result.user, uid);
             setLoading(false)
             // update userdata for firebase
             userUpdate({
@@ -72,7 +72,7 @@ const Register = () => {
             errorMessage && <p className='text-red-600'>Password must have minimum six characters including minimum one uppercase letter and minimum one lowercase letter</p>
            }
         </form>
-        <GoogleSignInButton location={location}></GoogleSignInButton>
+        <GoogleSignInButton></GoogleSignInButton>
            <p>Already registered? &nbsp;
             <Link to='/auth/login' className='text-teal-600 underline'>Go to Login</Link>
            </p>

@@ -8,7 +8,7 @@ const AllRecipes = () => {
         window.scrollTo(0,0);
     },[])
     const {selectedCuisine,allRecipes}=useContext(AuthContext);
-    console.log(selectedCuisine);
+    // console.log(selectedCuisine);
     
     
     // console.log(allRecipes);

@@ -87,10 +87,7 @@ const Home = () => {
             <h2 className="text-2xl font-semibold text-center bg-teal-200 py-2 shadow-sm mb-8">
               Popular Recipes:
             </h2>
-
-
-
-
+            
           <div className="bg-teal-100 px-5 py-10 mb-10">
             <div className="flex justify-center mb-8">
               <img className="max-h-[300px] rounded-lg" src={EggFlorentine} alt="EggFlorentine" />

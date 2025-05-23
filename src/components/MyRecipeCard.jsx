@@ -17,7 +17,7 @@ const MyRecipeCard = ({ recipe }) => {
     preparationTimeMin,
   } = recipe;
   const ingredientsUI=ingredients.join(', ');
-  console.log(ingredientsUI)
+  // console.log(ingredientsUI)
   const handleDelete = (id) => {
     // console.log(id)
     Swal.fire({

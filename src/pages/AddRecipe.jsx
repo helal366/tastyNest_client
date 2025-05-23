@@ -7,10 +7,8 @@ const AddRecipe = () => {
   useEffect(()=>{
     window.scrollTo(0,0)
   },[])
-  // https://server-tasty-nest.vercel.app/recipes
-  //   https://server-tasty-nest.vercel.app/recipes
-  //   https://www.themealdb.com/images/media/meals/bc8v651619789840.jpg
-  const { user, loading } = useContext(AuthContext);
+  
+  const { user, loading, setAllRecipes } = useContext(AuthContext);
   if (loading) {
     return <Loading></Loading>;
   }
@@ -24,9 +22,7 @@ const AddRecipe = () => {
       Object.fromEntries(formData.entries());
 
       const ingredientsParsed = ingredientsInput.replace(/[[\]]/g, '').replace(/[&/\\#+()$~%.'":*?<>{};]/g, '').split(",").map(ingredient=>ingredient.trim().replace(/'/g, '"')).filter(item=>item);
-      // const ingredientsParsed = JSON.parse(ingredientsStringified);
-    // const ingredientsStringified = ingredientsInput.replace(/'/g, '"');
-    // const ingredientsParsed = JSON.parse(ingredientsStringified);
+      
     
     const newRecipe = {
       ...rest,
@@ -34,7 +30,7 @@ const AddRecipe = () => {
       likeCount: parseInt(likeCount),
       preparationTimeMin: parseInt(preparationTimeMin),
     };
-    console.log(newRecipe, userEmail);
+    ;
 
     // add to mongodb server
     fetch(`https://server-tasty-nest.vercel.app/recipes`, {
@@ -48,7 +44,8 @@ const AddRecipe = () => {
       .then((data) => {
         if (data.insertedId) {
           toast.success("Your recipe added");
-          console.log(data);
+          
+          setAllRecipes(prev=>[...prev, {newRecipe, _id:data.insertedId}])
         }
       });
   };

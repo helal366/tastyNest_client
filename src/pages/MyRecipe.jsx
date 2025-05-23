@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import AuthContext from "../contexts-providers/AuthContext";
 import MyRecipeCard from "../components/MyRecipeCard";
 import NoRecipe from "../components/NoRecipe";
+import LottieMyRecipe from '../lotttie/myRecipe/LottieMyRecipe';
 
 const MyRecipe = () => {
   useEffect(() => {
@@ -19,6 +20,7 @@ const MyRecipe = () => {
       <h2 className="text-center text-2xl font-semibold py-4">
         My recipes: {recipeNumber}
       </h2>
+      <LottieMyRecipe></LottieMyRecipe>
       {recipeNumber===0 ? (
         <NoRecipe></NoRecipe>
       ) : (

@@ -2,13 +2,13 @@ import React from "react";
 import { Link } from "react-router";
 
 const RecipeCard = ({ recipe }) => {
-//   console.log(recipe);
+  //   console.log(recipe);
   const { image, title, category, cuisineType, _id, likeCount } = recipe;
   return (
-    <div className="bg-gray-200 border border-teal-600 text-gray-700 rounded flex flex-col justify-center p-2">
+    <div className="bg-gray-200 border border-teal-600 text-gray-700 rounded flex flex-col justify-center px-2 pt-5 pb-2 ">
       <div className="w-full flex justify-center mb-5">
         <img
-          className="w-[80%] h-40 rounded-lg border border-teal-600 p-1"
+          className="w-[80%] h-40 rounded-lg border border-teal-600 p-1 bg-white"
           src={image}
           alt={title}
         />
@@ -16,10 +16,14 @@ const RecipeCard = ({ recipe }) => {
       <h3 className="font-semibold text-center">{title}</h3>
       <p className="text-center text-sm">Category: {category}</p>
       <p className="text-center text-sm">Cuisine Type: {cuisineType}</p>
+
       <p className="text-center text-sm mb-4">Like Count: {likeCount}</p>
 
       <Link className="flex justify-center" to={`/single-recipe-page/${_id}`}>
-        <button className="btn bg-teal-600/50 hover:bg-teal-900 hover:text-white border-none"> View Details</button>
+        <button className="btn bg-teal-600/50 hover:bg-teal-900 hover:text-white border-none">
+          {" "}
+          View Details
+        </button>
       </Link>
     </div>
   );

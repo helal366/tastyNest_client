@@ -35,6 +35,7 @@ const Home = () => {
     autoplaySpeed: 2000,
     pauseOnHover: true,
   };
+  
 
   return (
     <>
@@ -68,6 +69,8 @@ const Home = () => {
               <button className="btn border-none">See All Recipes</button>
             </Link>
           </div>
+
+
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {topSixRecipes.map((topRecipe) => (

@@ -80,7 +80,9 @@ const MyRecipeCard = ({ recipe }) => {
     .then(data=>{
       if(data.modifiedCount){
         toast.success(`Your recipe updated successfully.`);
-        console.log(data)
+        setAllRecipes(prev=>{
+          return prev.map(recipe=> recipe._id===_id?{...recipe, ...newRecipe}:recipe)
+        })
       }
     })
   };
@@ -99,6 +101,7 @@ const MyRecipeCard = ({ recipe }) => {
           <h3 className="font-semibold text-teal-900">{title}</h3>
           <p className="text-sm">Category: {category}</p>
           <p className="text-sm mb-1">Cuisine Type: {cuisineType}</p>
+          <p className="text-sm mb-1">Preparation Time: {preparationTimeMin}</p>
           <p className="text-sm mb-4 font-medium text-teal-900">
             Likes: {likeCount}
           </p>

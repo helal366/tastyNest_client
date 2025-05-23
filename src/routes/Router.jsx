@@ -35,7 +35,7 @@ const router = createBrowserRouter([
           <Suspense fallback={<Loading></Loading>}>
             <AllRecipes></AllRecipes>
           </Suspense>
-        ),
+        )
       },
       {
         path: "/add-recipe",

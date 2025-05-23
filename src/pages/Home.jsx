@@ -32,6 +32,12 @@ const Home = () => {
     autoplaySpeed: 2000,
     pauseOnHover: true,
   };
+const handleSubmit=e=>{
+  e.preventDefault();
+  const ingredientsInput=e.target.ingredientsInput.value;
+  let ingredientsParsed=ingredientsInput.replace(/[[\]]/g, '').replace(/[&/\\#+()$~%.'":*?<>{};]/g, '').replace(/'/g, '"').split(",");
+console.log(ingredientsParsed)
+}
 
   return (
     <>
@@ -56,9 +62,9 @@ const Home = () => {
       </section>
 
       <section className="padding py-10">
-        <div className="bg-teal-200 shadow-2xl py-10 px-5">
+        <div className="bg-teal-500 shadow-2xl py-10 px-5">
           <div className="flex flex-col gap-2 mb-5 lg:mb-10">
-            <h2 className="text-2xl font-semibold text-center bg-[#fe9eb9] shadow-2xl">
+            <h2 className="text-2xl font-semibold text-center bg-teal-200 py-2 shadow-md inset-1/2">
               Six Top Like Count Recipes:
             </h2>
             <Link className="self-end" to="/all-recipes">
@@ -77,10 +83,18 @@ const Home = () => {
 
 
       <section className="padding py-10">
-        <div className="bg-teal-200 shadow-2xl py-10 px-5">
-            <h2 className="text-2xl font-semibold text-center bg-teal-500 shadow-2xl mb-8">
+        <div className="bg-teal-500 shadow-2xl py-10 px-5">
+            <h2 className="text-2xl font-semibold text-center bg-teal-200 py-2 shadow-sm mb-8">
               Popular Recipes:
             </h2>
+
+{/* form */}
+          <form onSubmit={handleSubmit}>
+            <input type="text" name="ingredientsInput" className="w-full py-3 border border-red-500 bg-orange-100"/>
+            <button type="submit" className="btn cursor-pointer mb-8" >Submit</button>
+          </form>
+
+
           <div className="bg-teal-100 px-5 py-10 mb-10">
             <div className="flex justify-center mb-8">
               <img className="max-h-[300px] rounded-lg" src={EggFlorentine} alt="EggFlorentine" />

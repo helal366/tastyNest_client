@@ -16,7 +16,8 @@ const MyRecipeCard = ({ recipe }) => {
     likeCount,
     preparationTimeMin,
   } = recipe;
-
+  const ingredientsUI=ingredients.join(', ');
+  console.log(ingredientsUI)
   const handleDelete = (id) => {
     // console.log(id)
     Swal.fire({
@@ -55,8 +56,9 @@ const MyRecipeCard = ({ recipe }) => {
     const formData=new FormData(form);
     const { preparationTimeMin, ingredientsInput, likeCount, ...rest } =
       Object.fromEntries(formData.entries());
-    const ingredientsStringified = ingredientsInput.replace(/'/g, '"');
-    const ingredientsParsed = JSON.parse(ingredientsStringified);
+    const ingredientsParsed = ingredientsInput.replace(/[[\]]/g, '').replace(/[&/\\#+()$~%.'":*?<>{};]/g, '')
+    .split(",").map(ingredient=>ingredient.trim().replace(/'/g, '"')).filter(item=>item);
+    
     
     const newRecipe = {
       ...rest,
@@ -78,7 +80,7 @@ const MyRecipeCard = ({ recipe }) => {
     .then(data=>{
       if(data.modifiedCount){
         toast.success(`Your recipe updated successfully.`);
-        // console.log(data)
+        console.log(data)
       }
     })
   };
@@ -174,7 +176,7 @@ const MyRecipeCard = ({ recipe }) => {
                     <textarea
                       name="ingredientsInput"
                       className="textarea textarea-bordered h-28 w-full"
-                      defaultValue={JSON.stringify(ingredients)}
+                      defaultValue={JSON.stringify(ingredientsUI)}
                       required
                     ></textarea>
 

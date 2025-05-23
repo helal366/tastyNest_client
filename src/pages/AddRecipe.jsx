@@ -19,8 +19,14 @@ const AddRecipe = () => {
     const formData = new FormData(form);
     const { preparationTimeMin, ingredientsInput, likeCount, ...rest } =
       Object.fromEntries(formData.entries());
-    const ingredientsStringified = ingredientsInput.replace(/'/g, '"');
-    const ingredientsParsed = JSON.parse(ingredientsStringified);
+
+      const ingredientsParsed = ingredientsInput.replace(/[[\]]/g, '').replace(/[&/\\#+()$~%.'":*?<>{};]/g, '').split(",").map(ingredient=>ingredient.trim().replace(/'/g, '"')).filter(item=>item);
+      // const ingredientsParsed = JSON.parse(ingredientsStringified);
+
+
+    // const ingredientsStringified = ingredientsInput.replace(/'/g, '"');
+    // const ingredientsParsed = JSON.parse(ingredientsStringified);
+
     
     const newRecipe = {
       ...rest,
@@ -48,7 +54,7 @@ const AddRecipe = () => {
   };
   return (
     <div className="py-10 padding">
-      <div className="card bg-base-100 w-full mx-auto max-w-lg shrink-0 shadow-2xl">
+      <div className="card bg-base-100 w-full mx-auto max-w-3xl shrink-0 shadow-2xl">
         <div className="card-body">
           <h2 className="text-xl text-center font-semibold mb-4">
             Please Add Your Recipe Here!
@@ -60,6 +66,7 @@ const AddRecipe = () => {
               name="title"
               className="input w-full"
               placeholder="Title"
+              required
             />
             <label className="label">Category</label>
             <input
@@ -67,6 +74,7 @@ const AddRecipe = () => {
               name="category"
               className="input w-full"
               placeholder="Ex: Breakfast, Lunch, Dinner, Dessert, Vegan"
+              required
             />
             <label className="label">Cuisine Type</label>
             <input
@@ -74,6 +82,7 @@ const AddRecipe = () => {
               name="cuisineType"
               className="input w-full"
               placeholder="Cuisine Type (ex: American, Chinese, Indian)"
+              required
             />
             <label className="label">Preparation Time</label>
             <input
@@ -81,6 +90,7 @@ const AddRecipe = () => {
               name="preparationTimeMin"
               className="input w-full"
               placeholder="Preparation Time (in min and a number)"
+              required
             />
             <label className="label">Instructions</label>
             <textarea
@@ -94,7 +104,7 @@ const AddRecipe = () => {
             <textarea
               name="ingredientsInput"
               className="textarea textarea-bordered h-28 w-full"
-              placeholder="Please add the ingredients into an array according to the example. (example: ['chicken', 'oil', 'garlic'])"
+              placeholder="Please write your ingredients here and separate them by comma(,). Example: chicken, oil, garlic"
               required
             ></textarea>
 
@@ -104,6 +114,7 @@ const AddRecipe = () => {
               name="image"
               className="input w-full"
               placeholder="Image URL"
+              required
             />
             <label className="label">Like Count</label>
             <input

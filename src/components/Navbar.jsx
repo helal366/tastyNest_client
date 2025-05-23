@@ -91,7 +91,7 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1 items-center text-[16px]">
             <li>
               <NavLink to="/">Home</NavLink>
-            </li>
+            </li> &nbsp;
             <li>
               <details>
                 <summary>
@@ -111,11 +111,11 @@ const Navbar = () => {
                   ))}
                 </ul>
               </details>
-            </li>
+            </li> &nbsp;
             
             <li>
               <NavLink to="/add-recipe">Add Recipe</NavLink>
-            </li>
+            </li>&nbsp;
             
             <li>
               <NavLink to="/my-recipe">My Recipes</NavLink>

@@ -1,9 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import AuthContext from "../contexts-providers/AuthContext";
 import Loading from "../components/Loading";
 import { toast } from "react-toastify";
 
 const AddRecipe = () => {
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
   // https://server-tasty-nest.vercel.app/recipes
   //   https://server-tasty-nest.vercel.app/recipes
   //   https://www.themealdb.com/images/media/meals/bc8v651619789840.jpg
@@ -22,11 +25,8 @@ const AddRecipe = () => {
 
       const ingredientsParsed = ingredientsInput.replace(/[[\]]/g, '').replace(/[&/\\#+()$~%.'":*?<>{};]/g, '').split(",").map(ingredient=>ingredient.trim().replace(/'/g, '"')).filter(item=>item);
       // const ingredientsParsed = JSON.parse(ingredientsStringified);
-
-
     // const ingredientsStringified = ingredientsInput.replace(/'/g, '"');
     // const ingredientsParsed = JSON.parse(ingredientsStringified);
-
     
     const newRecipe = {
       ...rest,

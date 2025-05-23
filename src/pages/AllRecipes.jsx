@@ -1,9 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import RecipeCard from '../components/RecipeCard';
 import AuthContext from '../contexts-providers/AuthContext';
 
 const AllRecipes = () => {
+    useEffect(()=>{
+        window.scrollTo(0,0);
+    },[])
     const {selectedCuisine,allRecipes}=useContext(AuthContext);
     console.log(selectedCuisine);
     

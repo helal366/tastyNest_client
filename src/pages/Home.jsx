@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -20,6 +20,9 @@ import ChickenWings from "../assets/chicken-wings.png"
 import PanCake from "../assets/japaneese-pancake-breakfast.png";
 import ChickenKaraage from "../assets/chicken-karaage.png";
 const Home = () => {
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
   const topSixRecipes = useLoaderData();
   // console.log(topSixRecipes);
   const settings = {
@@ -32,12 +35,6 @@ const Home = () => {
     autoplaySpeed: 2000,
     pauseOnHover: true,
   };
-const handleSubmit=e=>{
-  e.preventDefault();
-  const ingredientsInput=e.target.ingredientsInput.value;
-  let ingredientsParsed=ingredientsInput.replace(/[[\]]/g, '').replace(/[&/\\#+()$~%.'":*?<>{};]/g, '').replace(/'/g, '"').split(",");
-console.log(ingredientsParsed)
-}
 
   return (
     <>
@@ -88,11 +85,7 @@ console.log(ingredientsParsed)
               Popular Recipes:
             </h2>
 
-{/* form */}
-          <form onSubmit={handleSubmit}>
-            <input type="text" name="ingredientsInput" className="w-full py-3 border border-red-500 bg-orange-100"/>
-            <button type="submit" className="btn cursor-pointer mb-8" >Submit</button>
-          </form>
+
 
 
           <div className="bg-teal-100 px-5 py-10 mb-10">

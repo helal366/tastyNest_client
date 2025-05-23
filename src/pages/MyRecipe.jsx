@@ -1,8 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import AuthContext from '../contexts-providers/AuthContext';
 import MyRecipeCard from '../components/MyRecipeCard';
 
 const MyRecipe = () => {
+    useEffect(()=>{
+        window.scrollTo(0,0)
+    },[])
     const {allRecipes, user}=useContext(AuthContext);
     const userEmail=user?.email;
     const filteredRecipesByEmail=allRecipes.filter(recipe=>recipe?.adderEmail===userEmail)

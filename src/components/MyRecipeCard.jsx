@@ -120,6 +120,8 @@ const MyRecipeCard = ({ recipe }) => {
         </div>
 
         <div className="w-full flex justify-between">
+
+
           {/* Open the modal using document.getElementById('ID').showModal() method */}
           <button
             className="btn bg-teal-600/50 hover:bg-teal-900 hover:text-white"
@@ -195,7 +197,6 @@ const MyRecipeCard = ({ recipe }) => {
                       type="number"
                       name="likeCount"
                       className="input w-full"
-                      placeholder="starting value is 0"
                       defaultValue={likeCount}
                     />
 

@@ -174,7 +174,7 @@ const MyRecipeCard = ({ recipe }) => {
                       name="instructions"
                       className="textarea textarea-bordered h-40 w-full"
                       defaultValue={instructions}
-                      required
+                      
                     ></textarea>
 
                     <label className="label">Ingredients</label>
@@ -182,7 +182,7 @@ const MyRecipeCard = ({ recipe }) => {
                       name="ingredientsInput"
                       className="textarea textarea-bordered h-28 w-full"
                       defaultValue={JSON.stringify(ingredientsUI)}
-                      required
+                      
                     ></textarea>
 
                     <label className="label">Image URL</label>

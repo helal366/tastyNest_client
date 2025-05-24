@@ -6,10 +6,10 @@ import Lottie from 'lottie-react';
 const AllRecipesPage = () => {
     return (
         <div>
-            <div className='w-full h-40 flex justify-center mb-10 gap-5'>
+            <div className='w-full flex justify-center mb-10 gap-5'>
                 
-            <Lottie animationData={allRecipesPage} loop={true}></Lottie>
-            <Lottie animationData={allRecipesPageTwo} loop={true}></Lottie>
+            <Lottie className='max-h-[160px] max-w-[160px] ' animationData={allRecipesPage} loop={true}></Lottie>
+            <Lottie className='max-h-[160px] max-w-[160px]' animationData={allRecipesPageTwo} loop={true}></Lottie>
         </div>
         </div>
     );

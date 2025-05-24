@@ -1,22 +1,26 @@
 import { createBrowserRouter } from "react-router";
-import MainHomeLayout from "../layouts/MainHomeLayout";
-import ErrorPage from "../errorPage/ErrorPage";
-import Home from "../pages/Home";
-import AllRecipes from "../pages/AllRecipes";
-import AddRecipe from "../pages/AddRecipe";
-import MyRecipe from "../pages/MyRecipe";
-import AuthLayout from "../layouts/AuthLayout";
-import Login from "../auth/Login";
-import Register from "../auth/Register";
+import { lazy, Suspense } from "react";
 import PrivateRoute from "../contexts-providers/PrivateRoute";
 import Loading from "../components/Loading";
-import SingleRecipePage from "../pages/SingleRecipePage";
-import { Suspense } from "react";
+const  MainHomeLayout = lazy(()=>import("../layouts/MainHomeLayout"));
+const  ErrorPage = lazy(()=>import("../errorPage/ErrorPage"));
+const  Home = lazy(()=>import("../pages/Home"));
+const  AllRecipes = lazy(()=>import("../pages/AllRecipes"));
+const  AddRecipe = lazy(()=>import("../pages/AddRecipe"));
+const  MyRecipe = lazy(()=>import("../pages/MyRecipe"));
+const  AuthLayout = lazy(()=>import("../layouts/AuthLayout"));
+const  Login = lazy(()=>import("../auth/Login"));
+const  Register = lazy(()=>import("../auth/Register"));
+const  SingleRecipePage = lazy(()=>import("../pages/SingleRecipePage"));
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainHomeLayout></MainHomeLayout>,
+    element: (
+      <Suspense fallback={<Loading></Loading>}>
+        <MainHomeLayout></MainHomeLayout>
+      </Suspense>
+    ),
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
@@ -72,26 +76,46 @@ const router = createBrowserRouter([
       },
       {
         path: "*",
-        element: <ErrorPage></ErrorPage>,
+        element: (
+          <Suspense fallback={<Loading></Loading>}>
+            <ErrorPage></ErrorPage>
+          </Suspense>
+        ),
       },
     ],
   },
   {
     path: "/auth",
-    element: <AuthLayout></AuthLayout>,
+    element: (
+      <Suspense fallback={<Loading></Loading>}>
+        <AuthLayout></AuthLayout>
+      </Suspense>
+    ),
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/auth/login",
-        element: <Login></Login>,
+        element: (
+          <Suspense fallback={<Loading></Loading>}>
+            <Login></Login>
+          </Suspense>
+        ),
       },
       {
         path: "/auth/register",
-        element: <Register></Register>,
+        element: (
+          <Suspense fallback={<Loading></Loading>}>
+            <Register></Register>
+          </Suspense>
+        ),
       },
       {
         path: "*",
-        element: <ErrorPage></ErrorPage>,
+        element: (
+          <Suspense fallback={<Loading></Loading>}>
+            <ErrorPage></ErrorPage>
+          </Suspense>
+        ),
       },
     ],
   },

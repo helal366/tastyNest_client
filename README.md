@@ -52,6 +52,20 @@ https://client-tastynest.web.app/
 - Styled using react-icons for consistent design.
 - Easy to extend with links to social profiles or contact pages.
 
+# Tech Stack
+###  Frontend
+- React
+- React Router 
+- Tailwind CSS + DaisyUI
+- Firebase Authentication
+
+###  Backend
+- Node.js
+- Express.js
+- MongoDB Atlas
+- JSON Web Tokens (JWT)
+- CORS & Dotenv
+
 # NPM Packages Used
 - React.js  
 - React Router  

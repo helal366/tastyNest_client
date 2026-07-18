@@ -1,3 +1,6 @@
+<img width="507" height="293" alt="tastyNest_mockup" src="https://github.com/user-attachments/assets/37bca80d-7b5b-47de-8ddc-7fb318c619ff" />
+
+
 # Project Name: tastyNest
 **tastyNest** is a modern, responsive web application focused on delivering a delightful food experience online. Whether you want to explore new recipes, order tasty meals, or share your food adventures, tastyNest is your go-to platform!
 

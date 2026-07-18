@@ -62,20 +62,42 @@ https://client-tastynest.web.app/
 - React Type Writer
 - React Slick
 
+## Setup & Installation
+#### 1. Clone the repo:
+
+```
+git clone https://github.com/helal366/flexora_client.git
+cd flexora_client
+```
 
 
+#### 2. Install dependencies:
+```
+npm install
+```
 
+#### 3. Create a .env file with required environment variables (see below).
+```
+VITE_cloud_name="YOUR CLOUD NAME"
+VITE_upload_preset="YOUR UPLOAD PRESET"
+VITE_cloudinary_url="YOUR CLOUDINARY URL"
 
+VITE_apiKey="YOUR API KEY"
+VITE_authDomain="YOUR AUTH DOMAIN"
+VITE_projectId="YOUR PROJECT ID"
+VITE_storageBucket="YOUR STORAGE BUCKET"
+VITE_messagingSenderId="YOUR MESSAGING SENDER"
+VITE_appId="YOUR APP ID"
 
-# React + Vite
+VITE_STRIPE_PK="YOUR STRIPE PRIMARY KEY"
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+VITE_BASE_URL="YOUR BASE URL"
+```
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
+#### 4. Run the server:
+```
+npm start
+```
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

@@ -66,8 +66,8 @@ https://client-tastynest.web.app/
 #### 1. Clone the repo:
 
 ```
-git clone https://github.com/helal366/flexora_client.git
-cd flexora_client
+git clone [https://github.com/helal366/flexora_client.git](https://github.com/helal366/tastyNest_client.git)
+cd tastyNest_client
 ```
 
 
@@ -78,20 +78,12 @@ npm install
 
 #### 3. Create a .env file with required environment variables (see below).
 ```
-VITE_cloud_name="YOUR CLOUD NAME"
-VITE_upload_preset="YOUR UPLOAD PRESET"
-VITE_cloudinary_url="YOUR CLOUDINARY URL"
-
 VITE_apiKey="YOUR API KEY"
 VITE_authDomain="YOUR AUTH DOMAIN"
 VITE_projectId="YOUR PROJECT ID"
 VITE_storageBucket="YOUR STORAGE BUCKET"
 VITE_messagingSenderId="YOUR MESSAGING SENDER"
 VITE_appId="YOUR APP ID"
-
-VITE_STRIPE_PK="YOUR STRIPE PRIMARY KEY"
-
-VITE_BASE_URL="YOUR BASE URL"
 ```
 
 #### 4. Run the server:
